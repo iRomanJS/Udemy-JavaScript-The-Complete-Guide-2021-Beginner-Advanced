@@ -1,23 +1,66 @@
-const userChosenKeyName = 'level';
+const addMovieBtn = document.getElementById('add-movie-btn');
+const searchMovieBtn = document.getElementById('search-btn');
 
-let person = {
-    'first name': 'Max',
-    age: 30,
-    hobbies: ['Sports', 'Cooking'],
-    [userChosenKeyName]: '',
-    greet: function () {
-        alert('Hi there');
-    },
-    1.5: 'Hello'
+const movies = [];
+
+const renderMovies = (filter = '') => {
+    const movieList = document.getElementById('movie-list');
+
+    if (movies.length === 0) {
+        movieList.classList.remove('visible');
+    } else {
+        movieList.classList.add('visible');
+    }
+    movieList.innerHTML = ''; 
+
+    const filteredMovies = !filter ? movies : movies.filter(movie => movie.info.title.includes(filter));
+
+    filteredMovies.forEach((movie) => {
+        const movieEl = document.createElement('li');
+        const {info, ...otherProps} = movie;
+        console.log(otherProps);
+        // const {title: movieTitle} = info;
+        let {getFormatedTitle} = movie;
+        // getFormatedTitle = getFormatedTitle.bind(movie);
+        let text = getFormatedTitle.call(movie) + ' - ';
+        for (const key in info) {
+            if (key !== 'title') {
+                text = text + `${key}: ${info[key]}`;
+            }
+        }
+        movieEl.textContent = text;
+        movieList.append(movieEl);
+    });
 };
-// person.age = 31;
-// delete person.age;
-// person.age = undefined; // never asign undefined to value
-person.age = null;
-person.isAdmin = true;
 
-const keyName = 'first name';
+const addMoviHandler = () => {
+    const title = document.getElementById('title').value;
+    const extraName = document.getElementById('extra-name').value;
+    const extraValue = document.getElementById('extra-value').value;
 
-console.log(person[keyName]);
-// console.log(person['first name']);
-console.log(person[1.5]);
+    if (title.trim() === '' || extraName.trim() === '' || extraValue.trim() === '') {
+        return;
+    }
+
+    const newMovie = {
+        info: {
+            title,
+            [extraName]: extraValue
+        },
+        id: Math.random().toString(),
+        getFormatedTitle() {
+            return this.info.title.toUpperCase();
+        }
+    };
+
+    movies.push(newMovie);
+    renderMovies();
+};
+
+const searchMovieHandler = () => {
+    const filterTerm = document.getElementById('filter-title').value;
+    renderMovies(filterTerm);
+};
+
+addMovieBtn.addEventListener('click', addMoviHandler);
+searchMovieBtn.addEventListener('click', searchMovieHandler);
