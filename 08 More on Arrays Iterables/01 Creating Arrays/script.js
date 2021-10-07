@@ -80,8 +80,8 @@
 
 // console.log(maxIndex);
 
-const prices = [10.99, 5.99, 3.99, 6.59];
-const tax = 0.19;
+// const prices = [10.99, 5.99, 3.99, 6.59];
+// const tax = 0.19;
 // const taxAdjustedPrices = [];
 
 // for (const price of prices) {
@@ -93,32 +93,32 @@ const tax = 0.19;
 //     taxAdjustedPrices.push(priceObj);
 // });
 
-const taxAdjustedPrices = prices.map((price, idx, prices) => {
-    const priceObj = {index: idx, teaxAdjPrice: price * (1 + tax)};
-    return priceObj;
-});
+// const taxAdjustedPrices = prices.map((price, idx, prices) => {
+//     const priceObj = {index: idx, teaxAdjPrice: price * (1 + tax)};
+//     return priceObj;
+// });
 
 
 // console.log(prices, taxAdjustedPrices);
 
-const sortedPrices = prices.sort((a, b) => {    //this kind of method help to sort from bigger number to smaller number if u swap -1 and 1 it will sort from smaller to bigger
-    if (a > b) {
-        return -1;
-    } else if (a === b) {
-        return 0;
-    } else {
-        return 1;
-    }
-});
-console.log(sortedPrices.reverse()); // reverse() will made you array from end to begin as it mean reverse
+// const sortedPrices = prices.sort((a, b) => {    //this kind of method help to sort from bigger number to smaller number if u swap -1 and 1 it will sort from smaller to bigger
+//     if (a > b) {
+//         return -1;
+//     } else if (a === b) {
+//         return 0;
+//     } else {
+//         return 1;
+//     }
+// });
+// console.log(sortedPrices.reverse()); // reverse() will made you array from end to begin as it mean reverse
 
 // const filteredArray = prices.filter((price, index, prices) => { // this method will made new one array 
 //     return price > 6;
 // });  
 
-const filteredArray = prices.filter(price => price > 6);  // arrow function can make like this what is very good
+// const filteredArray = prices.filter(price => price > 6);  // arrow function can make like this what is very good
 
-console.log(filteredArray);
+// console.log(filteredArray);
 
 // let sum = 0;
 
@@ -133,16 +133,40 @@ console.log(filteredArray);
 
 // }, 0);
 
-const sum = prices.reduce((prevValue, curIndex) => prevValue + curIndex, 0);
+// const sum = prices.reduce((prevValue, curIndex) => prevValue + curIndex, 0);
 
-console.log(sum);
+// console.log(sum);
 
-const data = 'new york;10.99;2000';
+// const data = 'new york;10.99;2000';
 
-const transformData = data.split(';');
-transformData[1] = +transformData[1];
-console.log(transformData);
+// const transformData = data.split(';');
+// transformData[1] = +transformData[1];
+// console.log(transformData);
 
-const nameFragments = ['Max', 'Schwarz', 1];
-const namez = nameFragments.join(' ');  // this make name Fragments [] to string Max Schwarz 1  if we write join() so it will be like Max, Schwarz, 1
-console.log(namez);
+// const nameFragments = ['Max', 'Schwarz', 1];
+// const namez = nameFragments.join(' ');  // this make name Fragments [] to string Max Schwarz 1  if we write join() so it will be like Max, Schwarz, 1
+// console.log(namez);
+
+// const copiedNameFragments = [...nameFragments];
+// nameFragments.push('Mr');
+
+// console.log(Math.min(...prices));
+
+// const persons = [{name: 'Max', age: 30}, {name: 'Manuel', age: 31}];
+// const copiedPersons = persons.map(person => ({                          // this make new arrey with method map() where we pointing persons.name and persons.age but it will not tuch hobbies becouse it has new arrey 
+//     name: person.name,
+//     age: person.age
+// }));        
+
+
+// persons.push({name: 'Anna', age: 29});
+// persons[0].age = 31;
+
+// console.log(persons, copiedPersons);
+
+// const nameData = ['Max', 'Schwarz', 'Mr', 30];
+// const firstName = nameData[0];
+// const lastName = nameData[1];
+
+// const [firstName, lastName, ...otherInformation] = nameData;
+// console.log(firstName, lastName, otherInformation);     // this syuntax will separet urt arrey to var firstName with obj Max, lastName with obj Schwarz and spred operator ... make new array otherInformation with arr of 'Mr' and second element will be 30
