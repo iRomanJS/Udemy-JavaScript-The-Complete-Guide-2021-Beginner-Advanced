@@ -1,4 +1,4 @@
-const GOOGLE_API_KEY = 'put ur Api key here';
+const GOOGLE_API_KEY = 'AIzaSyCvLii0TVSuuFNkoA91DZfijp4BnUNkdS8';
 
 export async function getAddressFromCoords(coords) {
   const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&key=${GOOGLE_API_KEY}`);
